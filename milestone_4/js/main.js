@@ -192,5 +192,24 @@ createApp({
         });
       }, 1000);
     },
+    filterContacts() {
+      // Resetto la visibilità di tutti i contatti
+      this.contacts.forEach((contact) => {
+        contact.visible = true;
+      });
+
+      // Nascondo i contatti che non corrispondono al input utente
+      if (this.searchContact.toLowerCase()) {
+        this.contacts.forEach((contact) => {
+          if (
+            !contact.name
+              .toLowerCase()
+              .includes(this.searchContact.toLowerCase())
+          ) {
+            contact.visible = false;
+          }
+        });
+      }
+    },
   },
 }).mount("#app");
