@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vue Boolzapp</title>
+    <link rel="stylesheet" href="./css/style.css" />
+    <!-- Font Awesome -->
+    <script
+      src="https://kit.fontawesome.com/7711c3f1fc.js"
+      crossorigin="anonymous"
+    ></script>
+    <!-- Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Istok+Web:ital,wght@0,400;0,700;1,400;1,700&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body>
+    <div id="app" class="container">
+      <!-- Web App Window -->
+      <div class="window">
+        <!-- User Section -->
+        <div class="user">
+          <div class="user-window">
+            <!-- User Profile and Options Section -->
+            <div class="options">
+              <div class="user-data-left">
+                <div class="flex-user">
+                  <div class="user-icon">
+                    <img src="./img/avatar_2.jpg" alt="my-profile" />
+                  </div>
+                </div>
+                <div class="flex-functions">
+                  <div class="functions">
+                    <i class="fas fa-circle-notch"></i>
+                    <i class="fas fa-message"></i>
+                    <i class="fas fa-ellipsis-vertical"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- Notifications Section -->
+            <div class="notifications">
+              <div class="flex-notifications">
+                <div class="notifications-icon">
+                  <i class="fas fa-bell-slash"></i>
+                </div>
+                <div class="notifications-text">
+                  <h3 class="new-notification">
+                    Ricevi notifiche di nuovi messaggi
+                  </h3>
+                  <p class="desktop-notification">
+                    <a href="">Attiva notifiche desktop</a>
+                  </p>
+                </div>
+              </div>
+            </div>
+            <!-- Search Bar Section -->
+            <div class="input-search-group">
+              <div class="input-search">
+                <span class="input-search-icon"
+                  ><i class="fas fa-magnifying-glass"></i
+                ></span>
+              </div>
+              <input
+                class="search-bar"
+                type="text"
+                placeholder="Cerca o inizia una nuova chat"
+              />
+            </div>
+            <!-- Chat List Section -->
+            <div class="chat-list">
+              <ul>
+                <li
+                  v-for="(contact, index) in contacts"
+                  @click="currentContact = index"
+                >
+                  <div class="user-chat">
+                    <div class="user-icon">
+                      <img :src="contact.avatar" :alt="`user-icon-${index}`" />
+                    </div>
+                    <div class="info">
+                      <h3 class="name">{{contact.name}}</h3>
+                      <p class="preview">
+                        <i class="fas fa-check-double"></i>Lorem ipsum dolor sit
+                        amet...
+                      </p>
+                      <div class="time">12:00</div>
+                    </div>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <!-- Chat Section -->
+        <div class="chat">
+          <div class="chat-window">
+            <!-- Active User Details and Fuctions -->
+            <div class="user-data">
+              <div class="flex-user">
+                <div class="user-icon">
+                  <img src="./img/avatar_1.jpg" alt="my-profile" />
+                </div>
+                <div class="user-name">
+                  <h3 class="name">{{ contacts[currentContact].name }}</h3>
+                  <p class="last-access">Ultimo accesso oggi alle 12:00</p>
+                </div>
+              </div>
+              <div class="flex-functions">
+                <div class="functions">
+                  <i class="fas fa-magnifying-glass"></i>
+                  <i class="fas fa-paperclip"></i>
+                  <i class="fas fa-ellipsis-vertical"></i>
+                </div>
+              </div>
+            </div>
+            <!-- Messages Section -->
+            <div class="messages">
+              <div class="date"><span>Today</span></div>
+              <div class="card">
+                <div
+                  class="sent"
+                  v-for="(user, index) in contacts[currentContact].messages"
+                  :class="user.status"
+                >
+                  <div class="text">{{ user.message }}</div>
+                  <div class="right-functions">
+                    <div><i class="fas fa-angle-down"></i></div>
+                    <div class="time">
+                      12:00
+                      <!-- <i class="fas fa-check-double"></i> -->
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- Text Input Bar Section -->
+            <div class="insert">
+              <i class="fa-regular fa-face-smile"></i>
+              <input
+                class="message-bar"
+                type="text"
+                placeholder="Scrivi un messaggio"
+                v-model="newMessage"
+                @keyup.enter="sendNewMessage()"
+              />
+              <i class="fas fa-microphone"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- vue -->
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <!-- /vue -->
+    <!-- js -->
+    <script src="js/main.js"></script>
+    <!-- /js -->
+  </body>
+</html>
