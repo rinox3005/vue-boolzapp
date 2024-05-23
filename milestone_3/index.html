@@ -104,7 +104,10 @@
             <div class="user-data">
               <div class="flex-user">
                 <div class="user-icon">
-                  <img src="./img/avatar_1.jpg" alt="my-profile" />
+                  <img
+                    :src="contacts[currentContact].avatar"
+                    alt="my-profile"
+                  />
                 </div>
                 <div class="user-name">
                   <h3 class="name">{{ contacts[currentContact].name }}</h3>
