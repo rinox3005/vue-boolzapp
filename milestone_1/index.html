@@ -75,22 +75,22 @@
             <!-- Chat List Section -->
             <div class="chat-list">
               <ul>
-                <li>
+                <li v-for="(contact, index) in contacts">
                   <div class="user-chat">
                     <div class="user-icon">
-                      <img src="./img/avatar_1.jpg" alt="user-icon" />
+                      <img :src="contact.avatar" :alt="`user-icon-${index}`" />
                     </div>
                     <div class="info">
-                      <h3 class="name">Michele</h3>
+                      <h3 class="name">{{contact.name}}</h3>
                       <p class="preview">
                         <i class="fas fa-check-double"></i>Lorem ipsum dolor sit
                         amet...
                       </p>
-                      <div class="time">16:15</div>
+                      <div class="time">12:00</div>
                     </div>
                   </div>
                 </li>
-                <li>
+                <!-- <li>
                   <div class="user-chat">
                     <div class="user-icon">
                       <img src="./img/avatar_7.jpg" alt="user-icon" />
@@ -269,7 +269,7 @@
                       <div class="time">00:15</div>
                     </div>
                   </div>
-                </li>
+                </li> -->
               </ul>
             </div>
           </div>
