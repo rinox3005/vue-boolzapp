@@ -89,8 +89,9 @@
                       <h3 class="name">{{ contact.name }}</h3>
                       <p class="preview" v-if="contact.messages.length">
                         <!-- <i class="fas fa-check-double"></i> -->
-                        {{ contact.messages[contact.messages.length - 1].message
-                        }}
+                        {{
+                        hidePreviewOverflow(contact.messages[contact.messages.length
+                        - 1].message, 40) }}
                       </p>
                       <div class="time">
                         {{ (contact.messages[contact.messages.length -
