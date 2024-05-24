@@ -22,3 +22,5 @@ BONUS 1: cambiare icona in basso a destra (a fianco all'input per scrivere un nu
 BONUS 2: inviare quindi il messaggio anche cliccando sull'icona dell'aeroplano
 
 BONUS 3: in caso di messaggio troppo lungo, visualizzare nella preview della lista contatti solo una parte del messaggio e nascondere il resto
+
+BONUS 4: evitare che l'utente possa inviare un messaggio vuoto o composto solamente da spazi
