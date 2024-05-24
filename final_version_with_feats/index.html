@@ -20,11 +20,11 @@
   </head>
 
   <body>
-    <div id="app" class="container">
+    <div id="app" class="container" v-cloak>
       <!-- Web App Window -->
       <div class="window">
         <!-- User Section -->
-        <div class="user">
+        <div class="user" :class="{hidden: showChatList }">
           <div class="user-window">
             <!-- User Profile and Options Section -->
             <div class="options">
@@ -79,10 +79,10 @@
               <ul>
                 <li
                   v-for="(contact, index) in contacts"
-                  @click="currentContact = index"
+                  @click="showChat(index)"
                 >
                   <div class="user-chat" v-show="contact.visible">
-                    <div class="user-icon">
+                    <div class="user-icon-mobile">
                       <img :src="contact.avatar" :alt="`user-icon-${index}`" />
                     </div>
                     <div class="info">
@@ -102,11 +102,14 @@
           </div>
         </div>
         <!-- Chat Section -->
-        <div class="chat">
+        <div class="chat" :class="{hidden: showChatWindow }">
           <div class="chat-window">
             <!-- Active User Details and Fuctions -->
             <div class="user-data">
               <div class="flex-user">
+                <div class="back-arrow">
+                  <i class="fas fa-angle-left" @click="hideChat"></i>
+                </div>
                 <div class="user-icon">
                   <img
                     :src="contacts[currentContact].avatar"

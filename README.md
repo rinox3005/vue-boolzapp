@@ -24,3 +24,7 @@ BONUS 2: inviare quindi il messaggio anche cliccando sull'icona dell'aeroplano
 BONUS 3: in caso di messaggio troppo lungo, visualizzare nella preview della lista contatti solo una parte del messaggio e nascondere il resto
 
 BONUS 4: evitare che l'utente possa inviare un messaggio vuoto o composto solamente da spazi
+
+BONUS 5: in versione mobile mostrare subito l'elenco di chat e la barra di ricerca per mantenere attive tutte le funzionalitá, al click su una chat specifica mostrare quella conversazione, inserire pulsante per tornare indietro alla lista delle chat
+
+BONUS 6: visualizzare nella lista dei contatti l'ultimo messaggio inviato/ricevuto da ciascun contatto

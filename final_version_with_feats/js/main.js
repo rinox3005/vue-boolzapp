@@ -12,6 +12,8 @@ createApp({
       searchContact: "",
       dropdownOpenIndex: null,
       isVisible: false,
+      showChatWindow: true,
+      showChatList: false,
       contacts: [
         {
           name: "Michele",
@@ -174,6 +176,72 @@ createApp({
             },
           ],
         },
+        {
+          name: "Luigi",
+          avatar: "./img/avatar_1.jpg",
+          visible: true,
+          messages: [
+            {
+              date: "10/01/2020 15:30:55",
+              message: "Ciao, andiamo a mangiare la pizza stasera?",
+              status: "received",
+            },
+            {
+              date: "10/01/2020 15:50:00",
+              message: "No, l'ho già mangiata ieri, ordiniamo sushi!",
+              status: "sent",
+            },
+            {
+              date: "10/01/2020 15:51:00",
+              message: "No, non mi va",
+              status: "received",
+            },
+          ],
+        },
+        {
+          name: "Paolo",
+          avatar: "./img/avatar_2.jpg",
+          visible: true,
+          messages: [
+            {
+              date: "10/01/2020 15:30:55",
+              message: "Ciao, andiamo a mangiare la pizza stasera?",
+              status: "received",
+            },
+            {
+              date: "10/01/2020 15:50:00",
+              message: "No, l'ho già mangiata ieri, ordiniamo sushi!",
+              status: "sent",
+            },
+            {
+              date: "10/01/2020 15:51:00",
+              message: "Ovviamente! Non vedevo l'ora!",
+              status: "received",
+            },
+          ],
+        },
+        {
+          name: "Martina",
+          avatar: "./img/avatar_io.jpg",
+          visible: true,
+          messages: [
+            {
+              date: "10/01/2020 15:30:55",
+              message: "Ciao, andiamo a mangiare la pizza stasera?",
+              status: "received",
+            },
+            {
+              date: "10/01/2020 15:50:00",
+              message: "No, l'ho già mangiata ieri, ordiniamo sushi!",
+              status: "sent",
+            },
+            {
+              date: "10/01/2020 15:51:00",
+              message: "Certo",
+              status: "received",
+            },
+          ],
+        },
       ],
     };
   },
@@ -265,6 +333,18 @@ createApp({
           16
         );
       }
+    },
+    // funzione per mostrare il contenuto della chat e nascondere la lista delle chat in versione mobile
+    showChat(index) {
+      this.showChatList = true;
+      this.showChatWindow = false;
+      this.currentContact = index;
+      return this.currentContact;
+    },
+    // funzione per tornare alla lista chat da mobile
+    hideChat() {
+      this.showChatList = false;
+      this.showChatWindow = true;
     },
   },
 }).mount("#app");
