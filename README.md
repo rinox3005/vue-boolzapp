@@ -18,3 +18,5 @@ Cancella messaggio: cliccando sul messaggio appare un menu a tendina che permett
 Visualizzazione ora e ultimo messaggio inviato/ricevuto nella lista dei contatti
 
 BONUS 1: cambiare icona in basso a destra (a fianco all'input per scrivere un nuovo messaggio) finché l'utente non sta scrivendo: di default si visualizza l'icona del microfono, quando l'input non è vuoto si visualizza l'icona dell'aeroplano. Quando il messaggio è stato inviato e l'input si svuota, si torna a visualizzare il microfono.
+
+BONUS 2: inviare quindi il messaggio anche cliccando sull'icona dell'aeroplano
