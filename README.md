@@ -16,3 +16,5 @@ Ricerca utenti: scrivendo qualcosa nell’input a sinistra, vengono visualizzati
 Milestone 5 - opzionale
 Cancella messaggio: cliccando sul messaggio appare un menu a tendina che permette di cancellare il messaggio selezionato
 Visualizzazione ora e ultimo messaggio inviato/ricevuto nella lista dei contatti
+
+BONUS 1: cambiare icona in basso a destra (a fianco all'input per scrivere un nuovo messaggio) finché l'utente non sta scrivendo: di default si visualizza l'icona del microfono, quando l'input non è vuoto si visualizza l'icona dell'aeroplano. Quando il messaggio è stato inviato e l'input si svuota, si torna a visualizzare il microfono.
