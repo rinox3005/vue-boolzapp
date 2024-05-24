@@ -180,7 +180,7 @@ createApp({
   methods: {
     // funzione per pushare il nuovo oggetto contenente il messaggio in array e triggerare il setTimeout per l'invio della risposta della cpu
     sendNewMessage() {
-      // condizione per evitare di mandare un messaggio vuoto o composto solo da spazi
+      // condizione per evitare di mandare un messaggio vuoto o solamente composto da spazi
       if (this.newMessage.trim()) {
         // inizializzo le variabili mydate e mytime
         const mydate = dt.now().setLocale("it").toFormat("dd/MM/yyyy");
