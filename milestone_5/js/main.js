@@ -1,5 +1,7 @@
 "use strict";
 
+const dt = luxon.DateTime;
+
 const { createApp } = Vue;
 
 createApp({
@@ -178,17 +180,22 @@ createApp({
   methods: {
     // funzione per pushare il nuovo oggetto contenente il messaggio in array e triggerare il setTimeout per l'invio della risposta della cpu
     sendNewMessage() {
+      // inizializzo le variabili mydate e mytime
+      const mydate = dt.now().setLocale("it").toFormat("dd/MM/yyyy");
+      const mytime = dt.now().setLocale("it").toFormat("TT");
+      // pusho dentro l'array del contatto corrente l'oggetto con il nuovo messaggio e i dati relativi
       this.contacts[this.currentContact].messages.push({
-        date: "10/01/2020 15:50:00",
+        date: `${mydate} ${mytime}`,
         message: this.newMessage,
         status: "sent",
       });
+      console.log(this.contacts[this.currentContact].messages);
       // resetto il valore del campo del messaggio inserito dopo l'invio
       this.newMessage = "";
       // setto un timeout di 1 secondo per pushare l'oggetto con la risposta cpu
       setTimeout(() => {
         this.contacts[this.currentContact].messages.push({
-          date: "10/01/2020 15:50:00",
+          date: `${mydate} ${mytime}`,
           message: "ok",
           status: "received",
         });

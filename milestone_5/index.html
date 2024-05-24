@@ -92,7 +92,10 @@
                         {{ contact.messages[contact.messages.length - 1].message
                         }}
                       </p>
-                      <div class="time">12:00</div>
+                      <div class="time">
+                        {{ (contact.messages[contact.messages.length -
+                        1].date).substring(11, 16)}}
+                      </div>
                     </div>
                   </div>
                 </li>
@@ -142,7 +145,7 @@
                       ></i>
                     </div>
                     <div class="time">
-                      12:00
+                      {{user.date.substring(11, 16)}}
                       <!-- <i class="fas fa-check-double"></i> -->
                     </div>
                   </div>
@@ -178,6 +181,9 @@
     <!-- vue -->
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
     <!-- /vue -->
+    <!-- luxon -->
+    <script src="https://cdn.jsdelivr.net/npm/luxon@3.4.4/build/global/luxon.min.js"></script>
+    <!-- /luxon -->
     <!-- js -->
     <script src="js/main.js"></script>
     <!-- /js -->
