@@ -8,6 +8,8 @@ createApp({
       currentContact: 0,
       newMessage: "",
       searchContact: "",
+      dropdownOpenIndex: null,
+      isVisible: false,
       contacts: [
         {
           name: "Michele",
@@ -209,6 +211,33 @@ createApp({
             contact.visible = false;
           }
         });
+      }
+    },
+    // funzione che gestisce il dropdown
+    toggleDropdown(index) {
+      if (this.dropdownOpenIndex === index) {
+        // chiude il dropdown se é giá aperto
+        this.dropdownOpenIndex = null;
+        this.isVisible = false;
+      } else {
+        this.dropdownOpenIndex = index;
+        this.isVisible = true;
+      }
+    },
+
+    deleteMessage(index) {
+      this.contacts[this.currentContact].messages.splice(index, 1);
+      this.isVisible = false;
+      this.dropdownOpenIndex = null;
+    },
+
+    dropdownPosition(index) {
+      if (
+        this.contacts[this.currentContact].messages[index].status === "sent"
+      ) {
+        return "positionSent";
+      } else {
+        return "positionReceived";
       }
     },
   },

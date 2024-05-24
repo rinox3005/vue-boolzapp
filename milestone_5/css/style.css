@@ -215,6 +215,7 @@ body {
   margin-right: 25px;
   align-self: self-end;
   display: flex;
+  position: relative;
 }
 
 .received {
@@ -227,6 +228,7 @@ body {
   display: flex;
   align-self: self-start;
   justify-content: space-between;
+  position: relative;
 }
 
 .insert {
@@ -311,7 +313,7 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
-  padding: 15px 5px 5px 0;
+  padding: 5px;
   color: #aaaaa8;
 }
 
@@ -466,6 +468,10 @@ body {
   .user-chat .info .preview {
     font-size: 13px;
     color: rgb(179, 176, 176);
+    padding-right: 5px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
   }
 
   .info {
@@ -486,4 +492,35 @@ body {
   .container {
     max-width: 1320px;
   }
+}
+
+.dropdown-menu {
+  position: absolute;
+  background-color: #f9f9f9;
+  max-width: 100px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  top: 25px;
+  z-index: 1;
+  text-align: center;
+}
+
+.positionSent {
+  right: 10px;
+}
+.positionReceived {
+  right: -80px;
+}
+
+.dropdown-menu button {
+  color: black;
+  padding: 12px 16px;
+  display: block;
+  border: none;
+  background-color: transparent;
+  width: 100%;
+  font: inherit;
+  font-size: 13px;
+}
+.dropdown-menu button:hover {
+  background-color: #f1f1f1;
 }
