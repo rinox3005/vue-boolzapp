@@ -70,8 +70,6 @@
                 class="search-bar"
                 type="text"
                 placeholder="Cerca o inizia una nuova chat"
-                v-model="searchContact"
-                @input="filteredContacts"
               />
             </div>
             <!-- Chat List Section -->
@@ -81,7 +79,7 @@
                   v-for="(contact, index) in contacts"
                   @click="currentContact = index"
                 >
-                  <div class="user-chat" v-show="contact.visible">
+                  <div class="user-chat">
                     <div class="user-icon">
                       <img :src="contact.avatar" :alt="`user-icon-${index}`" />
                     </div>

@@ -86,11 +86,13 @@
                       <img :src="contact.avatar" :alt="`user-icon-${index}`" />
                     </div>
                     <div class="info">
-                      <h3 class="name">{{contact.name}}</h3>
-                      <p class="preview">
-                        <i class="fas fa-check-double"></i>Lorem ipsum dolor sit
-                        amet...
+                      <h3 class="name">{{ contact.name }}</h3>
+                      <p class="preview" v-if="contact.messages.length">
+                        <!-- <i class="fas fa-check-double"></i> -->
+                        {{ contact.messages[contact.messages.length - 1].message
+                        }}
                       </p>
+                      <p class="preview" v-else>nessun messaggio</p>
                       <div class="time">12:00</div>
                     </div>
                   </div>

@@ -21,4 +21,3 @@ Consigli utili:
 Si possono trascurare le scrollbar verticali, sia nel pannello dei messaggi, che nella lista dei contatti
 I pulsanti e le icone possono non funzionare (a parte l’invio del messaggio)
 Per gestire le date, può essere utile la libreria Luxon
-La struttura dell’array dei contatti potrebbe avere questa forma:
