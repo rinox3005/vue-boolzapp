@@ -93,10 +93,7 @@
                         hidePreviewOverflow(contact.messages[contact.messages.length
                         - 1].message, 40) }}
                       </p>
-                      <div class="time">
-                        {{ (contact.messages[contact.messages.length -
-                        1].date).substring(11, 16)}}
-                      </div>
+                      <div class="time">{{ lastMsgTime(contact) }}</div>
                     </div>
                   </div>
                 </li>

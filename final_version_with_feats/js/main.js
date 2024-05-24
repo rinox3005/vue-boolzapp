@@ -247,14 +247,22 @@ createApp({
         return "positionReceived";
       }
     },
+    // funzione per nascondere l'overflow della preview
     hidePreviewOverflow(string, limit) {
       const dots = "...";
       if (string.length > limit) {
-        // you can also use substr instead of substring
         string = string.substring(0, limit) + dots;
       }
-
       return string;
+    },
+    // funzione per prendere l'ora dell'ultimo messaggio dall'ultimo elemento dell'array dei messaggi
+    lastMsgTime(contact) {
+      if (contact.messages.length) {
+        return contact.messages[contact.messages.length - 1].date.substring(
+          11,
+          16
+        );
+      }
     },
   },
 }).mount("#app");
