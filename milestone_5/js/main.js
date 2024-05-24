@@ -231,13 +231,13 @@ createApp({
         this.isVisible = true;
       }
     },
-
+    // funzione per eliminare i messaggi dal dropdown menu
     deleteMessage(index) {
       this.contacts[this.currentContact].messages.splice(index, 1);
       this.isVisible = false;
       this.dropdownOpenIndex = null;
     },
-
+    // funzione per settare la posizione del dropdown in base allo status del messaggio
     dropdownPosition(index) {
       if (
         this.contacts[this.currentContact].messages[index].status === "sent"
