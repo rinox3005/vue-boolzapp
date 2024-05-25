@@ -436,6 +436,13 @@ createApp({
         this.isVisible = true;
       }
     },
+    // funzione per chiudere il dropdown cliccando in un punto qualsiasi della finestra della chat
+    closeDropdown() {
+      if (this.isVisible) {
+        this.dropdownOpenIndex = null;
+        this.isVisible = false;
+      }
+    },
     // funzione per eliminare i messaggi dal dropdown menu
     deleteMessage(index) {
       this.contacts[this.currentContact].messages.splice(index, 1);

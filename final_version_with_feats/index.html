@@ -158,7 +158,12 @@
               </div>
             </div>
             <!-- Messages Section -->
-            <div id="chat-container" class="messages" :class="bgStyleImage">
+            <div
+              id="chat-container"
+              class="messages"
+              :class="bgStyleImage"
+              @click="closeDropdown"
+            >
               <div class="date"><span>Today</span></div>
               <div class="card">
                 <div
@@ -170,7 +175,7 @@
                     <div>
                       <i
                         class="fas fa-angle-down"
-                        @click="toggleDropdown(index)"
+                        @click.stop="toggleDropdown(index)"
                       ></i>
                     </div>
                     <div class="time">
