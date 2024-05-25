@@ -14,6 +14,7 @@ createApp({
       isVisible: false,
       showChatWindow: true,
       showChatList: false,
+      randomResponse: "",
       contacts: [
         {
           name: "Michele",
@@ -243,8 +244,16 @@ createApp({
           ],
         },
       ],
+      randomResponses: [
+        "ok",
+        "grazie",
+        "non credo di potercela fare",
+        "certo, faró il possibile",
+        "penso che quello che di questo dovresti parlare con il diretto interessato, non penso di essere io la persona giusta!",
+      ],
     };
   },
+
   methods: {
     // funzione per pushare il nuovo oggetto contenente il messaggio in array e triggerare il setTimeout per l'invio della risposta della cpu
     sendNewMessage() {
@@ -265,11 +274,18 @@ createApp({
         setTimeout(() => {
           this.contacts[this.currentContact].messages.push({
             date: `${mydate} ${mytime}`,
-            message: "ok",
+            message: this.responseRandomizer(),
             status: "received",
           });
         }, 1000);
       }
+    },
+    // randomizzatore di risposte cpu
+    responseRandomizer() {
+      let length = this.randomResponses.length;
+      let randomIndex = Math.floor(Math.random() * length);
+      this.randomResponse = this.randomResponses[randomIndex];
+      return this.randomResponse;
     },
     filterContacts() {
       // Resetto la visibilità di tutti i contatti

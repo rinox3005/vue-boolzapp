@@ -28,3 +28,5 @@ BONUS 4: evitare che l'utente possa inviare un messaggio vuoto o composto solame
 BONUS 5: in versione mobile mostrare subito l'elenco di chat e la barra di ricerca per mantenere attive tutte le funzionalitá, al click su una chat specifica mostrare quella conversazione, inserire pulsante per tornare indietro alla lista delle chat
 
 BONUS 6: visualizzare nella lista dei contatti l'ultimo messaggio inviato/ricevuto da ciascun contatto
+
+BONUS 7: predisporre una lista di frasi e/o citazioni da utilizzare al posto della risposta "ok:" quando il pc risponde, anziché scrivere "ok", scegliere una frase random dalla lista e utilizzarla come testo del messaggio di risposta del pc
