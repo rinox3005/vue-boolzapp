@@ -15,6 +15,15 @@ createApp({
       showChatWindow: true,
       showChatList: false,
       randomResponse: "",
+      bgStyleWindow: "bgLight",
+      bgStyleChat: "bgLightChat",
+      bgStyleAlerts: "bgLightAlerts",
+      bgStyleBorders: "bgLightBorders",
+      bgStyleBordersSearch: "bgLightBordersSearch",
+      bgStyleMessageSent: "bgLightMessagesSent",
+      bgStyleMessageReceived: "bgLightMessagesReceived",
+      bgStyleImage: "bgLightImage",
+      bgStyleMessageBar: "bgLightMessagesBar",
       contacts: [
         {
           name: "Michele",
@@ -426,6 +435,34 @@ createApp({
     hideChat() {
       this.showChatList = false;
       this.showChatWindow = true;
+    },
+    // funzione per attivare la dark mode
+    switchDarkMode() {
+      if ((this.bgStyleWindow = "bgLight")) {
+        this.bgStyleWindow = "bgDark";
+        this.bgStyleChat = "bgDarkChat";
+        this.bgStyleAlerts = "bgDarkAlerts";
+        this.bgStyleBorders = "bgDarkBorders";
+        this.bgStyleBordersSearch = "bgDarkBordersSearch";
+        this.bgStyleMessageSent = "bgDarkMessagesSent";
+        this.bgStyleMessageReceived = "bgDarkMessagesReceived";
+        this.bgStyleImage = "bgDarkImage";
+        this.bgStyleMessageBar = "bgDarkMessagesBar";
+      }
+    },
+    // funzione per attivare la light mode
+    switchLightMode() {
+      if ((this.bgStyleWindow = "bgDark")) {
+        this.bgStyleWindow = "bgLight";
+        this.bgStyleChat = "bgLightChat";
+        this.bgStyleAlerts = "bgLightAlerts";
+        this.bgStyleBorders = "bgLightBorders";
+        this.bgStyleBordersSearch = "bgLightBordersSearch";
+        this.bgStyleMessageSent = "bgLightMessagesSent";
+        this.bgStyleMessageReceived = "bgLightMessagesReceived";
+        this.bgStyleImage = "bgLightImage";
+        this.bgStyleMessageBar = "bgLightMessagesBar";
+      }
     },
   },
 }).mount("#app");

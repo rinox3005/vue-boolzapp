@@ -24,14 +24,14 @@
       <!-- Web App Window -->
       <div class="window">
         <!-- User Section -->
-        <div class="user" :class="{hidden: showChatList }">
-          <div class="user-window">
+        <div class="user" :class="{hidden: showChatList}">
+          <div class="user-window" :class="bgStyleBorders">
             <!-- User Profile and Options Section -->
-            <div class="top-bar-mobile">
+            <div class="top-bar-mobile" :class="bgStyleWindow">
               <h2>Chats</h2>
               <i class="fas fa-plus"></i>
             </div>
-            <div class="options">
+            <div class="options" :class="bgStyleWindow">
               <div class="user-data-left">
                 <div class="flex-user">
                   <div class="user-icon">
@@ -48,7 +48,7 @@
               </div>
             </div>
             <!-- Notifications Section -->
-            <div class="notifications">
+            <div class="notifications" :class="bgStyleAlerts">
               <div class="flex-notifications">
                 <div class="notifications-icon">
                   <i class="fas fa-bell-slash"></i>
@@ -64,7 +64,10 @@
               </div>
             </div>
             <!-- Search Bar Section -->
-            <div class="input-search-group">
+            <div
+              class="input-search-group"
+              :class="bgStyleWindow, bgStyleBordersSearch"
+            >
               <div class="input-search">
                 <span class="input-search-icon"
                   ><i class="fas fa-magnifying-glass"></i
@@ -85,7 +88,11 @@
                   v-for="(contact, index) in contacts"
                   @click="showChat(index)"
                 >
-                  <div class="user-chat" v-show="contact.visible">
+                  <div
+                    class="user-chat"
+                    v-show="contact.visible"
+                    :class="bgStyleChat"
+                  >
                     <div class="user-icon-mobile">
                       <img :src="contact.avatar" :alt="`user-icon-${index}`" />
                     </div>
@@ -106,7 +113,7 @@
           </div>
         </div>
         <!-- Chat Section -->
-        <div class="chat" :class="{hidden: showChatWindow }">
+        <div class="chat" :class="{hidden: showChatWindow}, bgStyleWindow">
           <div class="chat-window">
             <!-- Active User Details and Fuctions -->
             <div class="user-data">
@@ -128,18 +135,24 @@
               <div class="flex-functions">
                 <div class="functions">
                   <i class="fas fa-magnifying-glass"></i>
-                  <i class="fas fa-paperclip hidden-paperclip"></i>
-                  <i class="fas fa-ellipsis-vertical hidden-ellipsis"></i>
+                  <i class="fas fa-paperclip"></i>
+                  <i
+                    class="fas fa-moon"
+                    v-if="(bgStyleWindow === 'bgLight')"
+                    @click="switchDarkMode"
+                  ></i>
+                  <i class="fas fa-sun" v-else @click="switchLightMode"></i>
+                  <i class="fas fa-ellipsis-vertical"></i>
                 </div>
               </div>
             </div>
             <!-- Messages Section -->
-            <div id="chat-container" class="messages">
+            <div id="chat-container" class="messages" :class="bgStyleImage">
               <div class="date"><span>Today</span></div>
               <div class="card">
                 <div
                   v-for="(user, index) in contacts[currentContact].messages"
-                  :class="user.status"
+                  :class="[user.status, { [bgStyleMessageSent]: user.status === 'sent' },{ [bgStyleMessageReceived]: user.status === 'received' }]"
                 >
                   <div class="text">{{ user.message }}</div>
                   <div class="right-functions">
@@ -173,6 +186,7 @@
               <i class="fa-regular fa-face-smile"></i>
               <input
                 class="message-bar"
+                :class="bgStyleMessageBar"
                 type="text"
                 placeholder="Scrivi un messaggio"
                 v-model="newMessage"
