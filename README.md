@@ -30,3 +30,5 @@ BONUS 5: in versione mobile mostrare subito l'elenco di chat e la barra di ricer
 BONUS 6: visualizzare nella lista dei contatti l'ultimo messaggio inviato/ricevuto da ciascun contatto
 
 BONUS 7: predisporre una lista di frasi e/o citazioni da utilizzare al posto della risposta "ok:" quando il pc risponde, anziché scrivere "ok", scegliere una frase random dalla lista e utilizzarla come testo del messaggio di risposta del pc
+
+BONUS 8: fare scroll in giù in automatico fino al messaggio più recente, quando viene aggiunto un nuovo messaggio alla conversazione (NB: potrebbe esserci bisogno di utilizzare nextTick)

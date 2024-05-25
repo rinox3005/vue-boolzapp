@@ -325,12 +325,22 @@ createApp({
         });
         // resetto il valore del campo del messaggio inserito dopo l'invio
         this.newMessage = "";
+        // utilizzo il metodo di vue nexTick passando come argomento una funzione di callback per scrollare giú la finestra quando si aggiorna il dom
+        this.$nextTick(() => {
+          const chatContainer = document.getElementById("chat-container");
+          chatContainer.scrollTop = chatContainer.scrollHeight;
+        });
         // setto un timeout di 1 secondo per pushare l'oggetto con la risposta cpu
         setTimeout(() => {
           this.contacts[this.currentContact].messages.push({
             date: `${mydate} ${mytime}`,
             message: this.responseRandomizer(),
             status: "received",
+          });
+          // utilizzo il metodo di vue nexTick passando come argomento una funzione di callback per scrollare giú la finestra quando si aggiorna il dom
+          this.$nextTick(() => {
+            const chatContainer = document.getElementById("chat-container");
+            chatContainer.scrollTop = chatContainer.scrollHeight;
           });
         }, 1000);
       }

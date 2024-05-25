@@ -20,7 +20,7 @@
   </head>
 
   <body>
-    <div id="app" class="container">
+    <div id="app" class="container" v-cloak>
       <!-- Web App Window -->
       <div class="window">
         <!-- User Section -->
@@ -134,7 +134,7 @@
               </div>
             </div>
             <!-- Messages Section -->
-            <div class="messages">
+            <div id="chat-container" class="messages">
               <div class="date"><span>Today</span></div>
               <div class="card">
                 <div
