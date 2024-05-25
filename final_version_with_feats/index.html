@@ -137,11 +137,15 @@
                   <i class="fas fa-magnifying-glass"></i>
                   <i class="fas fa-paperclip"></i>
                   <i
-                    class="fas fa-moon"
-                    v-if="(bgStyleWindow === 'bgLight')"
+                    class="fas fa-moon transition-icon icon-visible"
+                    v-if="(!darkMode)"
                     @click="switchDarkMode"
                   ></i>
-                  <i class="fas fa-sun" v-else @click="switchLightMode"></i>
+                  <i
+                    class="fas fa-sun transition-icon icon-visible"
+                    v-else
+                    @click="switchLightMode"
+                  ></i>
                   <i class="fas fa-ellipsis-vertical"></i>
                 </div>
               </div>

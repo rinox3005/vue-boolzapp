@@ -436,18 +436,19 @@ body {
 .right-functions .fa-angle-down:hover,
 .functions i:hover {
   cursor: pointer;
-  color: #6b7376;
+  color: #d3d0d0;
 }
 
 .insert i:hover {
   cursor: pointer;
-  color: #a7a6a6;
+  color: #afaeae;
 }
 
 /* LIGHT/DARK MODE */
 .functions .fa-sun:hover {
   color: orange;
 }
+
 .functions .fa-moon:hover {
   color: rgb(0, 162, 255);
 }

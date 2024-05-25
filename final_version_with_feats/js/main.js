@@ -15,15 +15,7 @@ createApp({
       showChatWindow: true,
       showChatList: false,
       randomResponse: "",
-      bgStyleWindow: "bgLight",
-      bgStyleChat: "bgLightChat",
-      bgStyleAlerts: "bgLightAlerts",
-      bgStyleBorders: "bgLightBorders",
-      bgStyleBordersSearch: "bgLightBordersSearch",
-      bgStyleMessageSent: "bgLightMessagesSent",
-      bgStyleMessageReceived: "bgLightMessagesReceived",
-      bgStyleImage: "bgLightImage",
-      bgStyleMessageBar: "bgLightMessagesBar",
+      darkMode: false,
       contacts: [
         {
           name: "Michele",
@@ -317,7 +309,38 @@ createApp({
       ],
     };
   },
-
+  computed: {
+    // assegno il compito di calcolare la classe corretta da applicare alle funzioni in base al valore true o false di darkMode invece di assegnare 10 proprietá diverse
+    bgStyleWindow() {
+      return this.darkMode ? "bgDark" : "bgLight";
+    },
+    bgStyleChat() {
+      return this.darkMode ? "bgDarkChat" : "bgLightChat";
+    },
+    bgStyleImage() {
+      return this.darkMode ? "bgDarkImage" : "bgLightImage";
+    },
+    bgStyleAlerts() {
+      return this.darkMode ? "bgDarkAlerts" : "bgLightAlerts";
+    },
+    bgStyleBorders() {
+      return this.darkMode ? "bgDarkBorders" : "bgLightBorders";
+    },
+    bgStyleBordersSearch() {
+      return this.darkMode ? "bgDarkBordersSearch" : "bgLightBordersSearch";
+    },
+    bgStyleMessageSent() {
+      return this.darkMode ? "bgDarkMessagesSent" : "bgLightMessagesSent";
+    },
+    bgStyleMessageReceived() {
+      return this.darkMode
+        ? "bgDarkMessagesReceived"
+        : "bgLightMessagesReceived";
+    },
+    bgStyleMessageBar() {
+      return this.darkMode ? "bgDarkMessagesBar" : "bgLightMessagesBar";
+    },
+  },
   methods: {
     // funzione per pushare il nuovo oggetto contenente il messaggio in array e triggerare il setTimeout per l'invio della risposta della cpu
     sendNewMessage() {
@@ -366,7 +389,6 @@ createApp({
       this.contacts.forEach((contact) => {
         contact.visible = true;
       });
-
       // Nascondo i contatti che non corrispondono al input utente
       if (this.searchContact.toLowerCase()) {
         this.contacts.forEach((contact) => {
@@ -438,31 +460,11 @@ createApp({
     },
     // funzione per attivare la dark mode
     switchDarkMode() {
-      if ((this.bgStyleWindow = "bgLight")) {
-        this.bgStyleWindow = "bgDark";
-        this.bgStyleChat = "bgDarkChat";
-        this.bgStyleAlerts = "bgDarkAlerts";
-        this.bgStyleBorders = "bgDarkBorders";
-        this.bgStyleBordersSearch = "bgDarkBordersSearch";
-        this.bgStyleMessageSent = "bgDarkMessagesSent";
-        this.bgStyleMessageReceived = "bgDarkMessagesReceived";
-        this.bgStyleImage = "bgDarkImage";
-        this.bgStyleMessageBar = "bgDarkMessagesBar";
-      }
+      this.darkMode = true;
     },
     // funzione per attivare la light mode
     switchLightMode() {
-      if ((this.bgStyleWindow = "bgDark")) {
-        this.bgStyleWindow = "bgLight";
-        this.bgStyleChat = "bgLightChat";
-        this.bgStyleAlerts = "bgLightAlerts";
-        this.bgStyleBorders = "bgLightBorders";
-        this.bgStyleBordersSearch = "bgLightBordersSearch";
-        this.bgStyleMessageSent = "bgLightMessagesSent";
-        this.bgStyleMessageReceived = "bgLightMessagesReceived";
-        this.bgStyleImage = "bgLightImage";
-        this.bgStyleMessageBar = "bgLightMessagesBar";
-      }
+      this.darkMode = false;
     },
   },
 }).mount("#app");
