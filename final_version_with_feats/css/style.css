@@ -113,7 +113,7 @@ body {
 
 .chat-list {
   width: 100%;
-  height: calc(100% - 45px);
+  height: calc(100% - 105px);
   overflow-y: scroll;
 }
 
@@ -166,6 +166,35 @@ body {
 .user-data-left {
   height: 70px;
   width: 100%;
+}
+
+.top-bar-mobile {
+  height: 60px;
+  background-color: var(--chat-color);
+  position: relative;
+}
+
+.top-bar-mobile .fa-plus:hover {
+  cursor: pointer;
+  /* background-color: rgb(182, 180, 180); */
+  color: rgb(0, 0, 0);
+}
+
+.top-bar-mobile h2 {
+  font-size: 40px;
+  padding-top: 6px;
+  padding-left: 20px;
+  color: #1d1d1d;
+}
+.top-bar-mobile .fa-plus {
+  position: absolute;
+  top: 16px;
+  right: 20px;
+  font-size: 20px;
+  background-color: rgb(3, 177, 32);
+  padding: 5px 7px;
+  border-radius: 50%;
+  color: white;
 }
 
 .messages {
@@ -478,6 +507,10 @@ body {
   .options {
     height: 70px;
     background-color: var(--chat-color);
+  }
+
+  .top-bar-mobile {
+    display: none;
   }
 
   .user-icon-mobile {
