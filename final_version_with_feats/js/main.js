@@ -16,6 +16,7 @@ createApp({
       showChatList: false,
       randomResponse: "",
       darkMode: false,
+      currentStatus: "",
       contacts: [
         {
           name: "Michele",
@@ -341,6 +342,10 @@ createApp({
       return this.darkMode ? "bgDarkMessagesBar" : "bgLightMessagesBar";
     },
   },
+  mounted() {
+    // setto il valore contenuto dentro currentStatus quando monto l'app
+    this.trackLastAccessTime();
+  },
   methods: {
     // funzione per pushare il nuovo oggetto contenente il messaggio in array e triggerare il setTimeout per l'invio della risposta della cpu
     sendNewMessage() {
@@ -362,7 +367,15 @@ createApp({
           const chatContainer = document.getElementById("chat-container");
           chatContainer.scrollTop = chatContainer.scrollHeight;
         });
-        // setto un timeout di 1 secondo per pushare l'oggetto con la risposta cpu
+        // timeout per mostrare lo status online per un pó prima di ricevere risposta
+        setTimeout(() => {
+          this.currentStatus = "Online";
+        }, 2000);
+        // timeout per mostrare Sta scrivendo...
+        setTimeout(() => {
+          this.currentStatus = "Sta scrivendo...";
+        }, 3000);
+        // setto un timeout di 5 secondi per pushare l'oggetto con la risposta cpu
         setTimeout(() => {
           this.contacts[this.currentContact].messages.push({
             date: `${mydate} ${mytime}`,
@@ -374,7 +387,17 @@ createApp({
             const chatContainer = document.getElementById("chat-container");
             chatContainer.scrollTop = chatContainer.scrollHeight;
           });
-        }, 1000);
+          // timeout per mostrare lo status online immediatamente dopo la fine di Sta scrivendo...
+          setTimeout(() => {
+            this.currentStatus = "Online";
+          }, 1);
+          // timeout per mostrare l'ultimo accesso dopo 5 secondi
+          setTimeout(() => {
+            this.currentStatus = `Ultimo accesso alle ore ${this.lastMsgTime(
+              this.contacts[this.currentContact]
+            )}`;
+          }, 3000);
+        }, 6000);
       }
     },
     // randomizzatore di risposte cpu
@@ -465,6 +488,14 @@ createApp({
     // funzione per attivare la light mode
     switchLightMode() {
       this.darkMode = false;
+    },
+    // funzione per aggiornare lo stato corrente dell'ultimo messaggio inviato e quindi dell'ultimo accesso
+    trackLastAccessTime() {
+      if (this.contacts[this.currentContact]) {
+        this.currentStatus = `Ultimo accesso alle ore ${this.lastMsgTime(
+          this.contacts[this.currentContact]
+        )}`;
+      }
     },
   },
 }).mount("#app");
