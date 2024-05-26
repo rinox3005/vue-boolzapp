@@ -312,6 +312,9 @@ createApp({
   },
   computed: {
     // assegno il compito di calcolare la classe corretta da applicare alle funzioni in base al valore true o false di darkMode invece di assegnare 10 proprietá diverse
+    bgStyleWebApp() {
+      return this.darkMode ? "bgDarkWebApp" : "bgLightWebApp";
+    },
     bgStyleWindow() {
       return this.darkMode ? "bgDark" : "bgLight";
     },

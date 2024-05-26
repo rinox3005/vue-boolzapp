@@ -22,7 +22,7 @@
   <body>
     <div id="app" class="container" v-cloak>
       <!-- Web App Window -->
-      <div class="window">
+      <div class="window" :class="bgStyleWebApp">
         <!-- User Section -->
         <div class="user" :class="{hidden: showChatList}">
           <div class="user-window" :class="bgStyleBorders">
