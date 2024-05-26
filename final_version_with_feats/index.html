@@ -71,6 +71,11 @@
               class="input-search-group"
               :class="bgStyleWindow, bgStyleBordersSearch"
             >
+              <i
+                class="fas fa-xmark"
+                v-show="searchContact"
+                @click="clearSearchBar"
+              ></i>
               <div class="input-search">
                 <span class="input-search-icon"
                   ><i class="fas fa-magnifying-glass"></i

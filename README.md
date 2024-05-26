@@ -36,3 +36,5 @@ BONUS 8: fare scroll in giù in automatico fino al messaggio più recente, quand
 BONUS 9: aggiungere un'icona per cambiare la modalità light/dark: dovrebbe essere sufficiente aggiungere una classe al wrapper principale
 
 BONUS 10: sotto al nome del contatto nella parte in alto a destra, cambiare l'indicazione dello stato: visualizzare il testo "sta scrivendo..." nel timeout in cui il pc risponde, poi mantenere la scritta "online" per un paio di secondi e infine visualizzare "ultimo accesso alle xx:yy" con l'orario corretto
+
+BONUS 11: aggiungere nella barra di ricerca un'icona X che viene mostrata solo quando si inizia a ricercare un contatto. Al click resettare la ricerca e mostrare tutti i contatti.

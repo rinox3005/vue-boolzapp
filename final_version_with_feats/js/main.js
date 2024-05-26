@@ -504,5 +504,11 @@ createApp({
         )}`;
       }
     },
+    clearSearchBar() {
+      this.searchContact = "";
+      this.contacts.forEach((contact) => {
+        contact.visible = true;
+      });
+    },
   },
 }).mount("#app");
