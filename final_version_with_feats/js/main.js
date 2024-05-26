@@ -321,6 +321,9 @@ createApp({
     bgStyleChat() {
       return this.darkMode ? "bgDarkChat" : "bgLightChat";
     },
+    bgStyleMenu() {
+      return this.darkMode ? "bgDarkMenu" : "bgLightMenu";
+    },
     bgStyleImage() {
       return this.darkMode ? "bgDarkImage" : "bgLightImage";
     },
