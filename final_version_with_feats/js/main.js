@@ -357,6 +357,9 @@ createApp({
   methods: {
     // funzione per pushare il nuovo oggetto contenente il messaggio in array e triggerare il setTimeout per l'invio della risposta della cpu
     handleMessageWindow() {
+      if (!this.newMessage.trim()) {
+        this.newMessage = "";
+      }
       // condizione per evitare di mandare un messaggio vuoto o solamente composto da spazi
       if (this.newMessage.trim()) {
         // richiamo la funzione per inviare il messaggio dell'utente
@@ -367,8 +370,10 @@ createApp({
         this.showOnlineStatus(2000);
         // timeout per mostrare Sta scrivendo...
         this.showIsWritingStatus(3000);
+        // cancello il timeout per evitare risposte multiple a messaggi multipli inviati in breve tempo
+        clearTimeout(this.currentTimeout);
         // setto un timeout di 5 secondi per pushare l'oggetto con la risposta cpu
-        setTimeout(() => {
+        this.currentTimeout = setTimeout(() => {
           this.sendCpuMessage();
           // richiamo la funzione per scollare alla fine della pagina
           this.scrollToLastMessage();
