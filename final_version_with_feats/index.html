@@ -211,13 +211,16 @@
                 type="text"
                 placeholder="Scrivi un messaggio"
                 v-model="newMessage"
-                @keyup.enter="sendNewMessage()"
+                @keyup.enter="handleMessageWindow()"
               />
               <div v-if="!newMessage">
                 <i class="fas fa-microphone"></i>
               </div>
               <div v-else>
-                <i class="fas fa-paper-plane" @click="sendNewMessage()"></i>
+                <i
+                  class="fas fa-paper-plane"
+                  @click="handleMessageWindow()"
+                ></i>
               </div>
             </div>
           </div>

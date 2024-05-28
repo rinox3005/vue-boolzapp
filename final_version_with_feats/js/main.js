@@ -17,6 +17,8 @@ createApp({
       randomResponse: "",
       darkMode: false,
       currentStatus: "",
+      currentDate: "",
+      currentTime: "",
       contacts: [
         {
           name: "Michele",
@@ -354,57 +356,83 @@ createApp({
   },
   methods: {
     // funzione per pushare il nuovo oggetto contenente il messaggio in array e triggerare il setTimeout per l'invio della risposta della cpu
-    sendNewMessage() {
+    handleMessageWindow() {
       // condizione per evitare di mandare un messaggio vuoto o solamente composto da spazi
       if (this.newMessage.trim()) {
-        // inizializzo le variabili mydate e mytime
-        const mydate = dt.now().setLocale("it").toFormat("dd/MM/yyyy");
-        const mytime = dt.now().setLocale("it").toFormat("TT");
-        // pusho dentro l'array del contatto corrente l'oggetto con il nuovo messaggio e i dati relativi
-        this.contacts[this.currentContact].messages.push({
-          date: `${mydate} ${mytime}`,
-          message: this.newMessage,
-          status: "sent",
-        });
-        // resetto il valore del campo del messaggio inserito dopo l'invio
-        this.newMessage = "";
-        // utilizzo il metodo di vue nexTick passando come argomento una funzione di callback per scrollare giú la finestra quando si aggiorna il dom
-        this.$nextTick(() => {
-          const chatContainer = document.getElementById("chat-container");
-          chatContainer.scrollTop = chatContainer.scrollHeight;
-        });
+        // richiamo la funzione per inviare il messaggio dell'utente
+        this.sendUserMessage();
+        // richiamo la funzione per scollare alla fine della pagina
+        this.scrollToLastMessage();
         // timeout per mostrare lo status online per un pó prima di ricevere risposta
-        setTimeout(() => {
-          this.currentStatus = "Online";
-        }, 2000);
+        this.showOnlineStatus(2000);
         // timeout per mostrare Sta scrivendo...
-        setTimeout(() => {
-          this.currentStatus = "Sta scrivendo...";
-        }, 3000);
+        this.showIsWritingStatus(3000);
         // setto un timeout di 5 secondi per pushare l'oggetto con la risposta cpu
         setTimeout(() => {
-          this.contacts[this.currentContact].messages.push({
-            date: `${mydate} ${mytime}`,
-            message: this.responseRandomizer(),
-            status: "received",
-          });
-          // utilizzo il metodo di vue nexTick passando come argomento una funzione di callback per scrollare giú la finestra quando si aggiorna il dom
-          this.$nextTick(() => {
-            const chatContainer = document.getElementById("chat-container");
-            chatContainer.scrollTop = chatContainer.scrollHeight;
-          });
+          this.sendCpuMessage();
+          // richiamo la funzione per scollare alla fine della pagina
+          this.scrollToLastMessage();
           // timeout per mostrare lo status online immediatamente dopo la fine di Sta scrivendo...
-          setTimeout(() => {
-            this.currentStatus = "Online";
-          }, 1);
+          this.showOnlineStatus(1);
           // timeout per mostrare l'ultimo accesso dopo 5 secondi
-          setTimeout(() => {
-            this.currentStatus = `Ultimo accesso alle ore ${this.lastMsgTime(
-              this.contacts[this.currentContact]
-            )}`;
-          }, 3000);
+          this.setLastAccess(3000);
         }, 6000);
       }
+    },
+    //funzione per inviare il messaggio dell'utente
+    sendUserMessage() {
+      this.setCurrentDateTime();
+      // pusho dentro l'array del contatto corrente l'oggetto con il nuovo messaggio e i dati relativi
+      this.contacts[this.currentContact].messages.push({
+        date: `${this.currentDate} ${this.currentTime}`,
+        message: this.newMessage,
+        status: "sent",
+      });
+      // resetto il valore del campo del messaggio inserito dopo l'invio
+      this.newMessage = "";
+    },
+    // funzione per inviare il messaggio cpu
+    sendCpuMessage() {
+      this.setCurrentDateTime();
+      this.contacts[this.currentContact].messages.push({
+        date: `${this.currentDate} ${this.currentTime}`,
+        message: this.responseRandomizer(),
+        status: "received",
+      });
+    },
+    // funzione per settare data e ora corrente
+    setCurrentDateTime() {
+      // inizializzo le variabili mydate e mytime
+      this.currentDate = dt.now().setLocale("it").toFormat("dd/MM/yyyy");
+      this.currentTime = dt.now().setLocale("it").toFormat("TT");
+    },
+    // funzione che utilizza nextTick per scrollare alla fine del container
+    scrollToLastMessage() {
+      // utilizzo il metodo di vue nexTick passando come argomento una funzione di callback per scrollare giú la finestra quando si aggiorna il dom
+      this.$nextTick(() => {
+        const chatContainer = document.getElementById("chat-container");
+        chatContainer.scrollTop = chatContainer.scrollHeight;
+      });
+    },
+    // timeout per mostrare stato online
+    showOnlineStatus(time) {
+      setTimeout(() => {
+        this.currentStatus = "Online";
+      }, time);
+    },
+    // timeout per mostrare Sta scrivendo...
+    showIsWritingStatus(time) {
+      setTimeout(() => {
+        this.currentStatus = "Sta scrivendo...";
+      }, time);
+    },
+    // timeout per settare lo stato di last access
+    setLastAccess(time) {
+      setTimeout(() => {
+        this.currentStatus = `Ultimo accesso alle ore ${this.lastMsgTime(
+          this.contacts[this.currentContact]
+        )}`;
+      }, time);
     },
     // randomizzatore di risposte cpu
     responseRandomizer() {
@@ -413,6 +441,7 @@ createApp({
       this.randomResponse = this.randomResponses[randomIndex];
       return this.randomResponse;
     },
+    // funzione per filtrare la ricerca dei messaggi
     filterContacts() {
       // Resetto la visibilità di tutti i contatti
       this.contacts.forEach((contact) => {
