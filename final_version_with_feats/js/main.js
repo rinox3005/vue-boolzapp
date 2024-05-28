@@ -449,12 +449,12 @@ createApp({
     // funzione per filtrare la ricerca dei messaggi
     filterContacts() {
       // Resetto la visibilità di tutti i contatti
-      this.contacts.forEach((contact) => {
+      this.contacts.map((contact) => {
         contact.visible = true;
       });
       // Nascondo i contatti che non corrispondono al input utente
       if (this.searchContact.toLowerCase()) {
-        this.contacts.forEach((contact) => {
+        this.contacts.map((contact) => {
           if (
             !contact.name
               .toLowerCase()
